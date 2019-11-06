@@ -1,21 +1,15 @@
-"""mysite URL Configuration
-
-The `urlpatterns` list routes URLs to views. For more information please see:
-    https://docs.djangoproject.com/en/2.0/topics/http/urls/
-Examples:
-Function views
-    1. Add an import:  from my_app import views
-    2. Add a URL to urlpatterns:  path('', views.home, name='home')
-Class-based views
-    1. Add an import:  from other_app.views import Home
-    2. Add a URL to urlpatterns:  path('', Home.as_view(), name='home')
-Including another URLconf
-    1. Import the include() function: from django.urls import include, path
-    2. Add a URL to urlpatterns:  path('blog/', include('blog.urls'))
-"""
+from django.conf.urls import include, url
 from django.contrib import admin
-from django.urls import path
+from cc.models import IssueTracker
+from cc import views
+from django.conf.urls import include, url
+from cc.models import IssueTracker
+from cc import views
+from cc import view_controller
 
 urlpatterns = [
-    path('admin/', admin.site.urls),
+    url(r'^admin/', admin.site.urls),
+    url(r'^IssueTracker/', views.board.as_view()),
+    url(r'push_data', view_controller.push_data, name='push_data'),
+    url(r'iris1_update_template_data', view_controller.update_schema_data, name='update_schema_data'),
 ]
